@@ -14,4 +14,9 @@ runcmd:
   # Install GitLab
   # https://about.gitlab.com/install/#debian
   - curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
-  - EXTERNAL_URL="https://${gitlab_fqdn}" apt-get install gitlab-ce
+
+  # https://docs.gitlab.com/ee/administration/environment_variables.html
+  - export EXTERNAL_URL="https://${gitlab_fqdn}"
+  - export GITLAB_ROOT_PASSWORD="${gitlab_root_password}"
+
+  - apt-get install gitlab-ce
